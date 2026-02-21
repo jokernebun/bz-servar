@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Context Menu -->
+<div id="menu-overlay" class="hidden">
+    <div id="menu-box">
+        <div id="menu-header">
+            <div id="menu-title">Meniu</div>
+            <div id="menu-subtitle"></div>
+        </div>
+        <div id="menu-list"></div>
+    </div>
+</div>
+
+<!-- Input Dialog -->
+<div id="input-overlay" class="hidden">
+    <div id="input-box">
+        <div id="input-title">Completati</div>
+        <div id="input-fields"></div>
+        <div id="input-buttons">
+            <button id="input-cancel">Anuleaza</button>
+            <button id="input-submit">Confirma</button>
+        </div>
+    </div>
+</div>
+
+<!-- Progress Bar -->
+<div id="progress-overlay" class="hidden">
+    <div id="progress-box">
+        <div id="progress-label">Se incarca...</div>
+        <div id="progress-track"><div id="progress-fill"></div></div>
+        <div id="progress-hint">Apasa X pentru a anula</div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

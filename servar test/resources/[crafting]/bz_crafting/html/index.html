@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="crafting" class="hidden">
+    <div id="craft-panel">
+        <div id="craft-header">
+            <div id="craft-icon">🔨</div>
+            <div>
+                <div id="craft-title">Masa de Crafting</div>
+                <div id="craft-subtitle">Selecteaza un item pentru a fabrica</div>
+            </div>
+            <button id="craft-close" onclick="close()">✕</button>
+        </div>
+
+        <div id="craft-search-wrap">
+            <input id="craft-search" type="text" placeholder="Cauta reteta..." oninput="filterRecipes()" />
+        </div>
+
+        <div id="recipe-list"></div>
+    </div>
+
+    <!-- Recipe Detail -->
+    <div id="recipe-detail" class="hidden">
+        <div id="detail-icon"></div>
+        <div id="detail-name"></div>
+        <div id="detail-desc"></div>
+        <div id="detail-time"></div>
+
+        <div id="ingredients-title">Ingrediente necesare:</div>
+        <div id="ingredients-list"></div>
+
+        <div id="detail-result">
+            <span id="result-icon"></span>
+            <span id="result-count"></span>
+        </div>
+
+        <button id="btn-craft" onclick="craftSelected()">⚒️ Fabrica</button>
+        <button id="btn-back"  onclick="clearDetail()">← Inapoi</button>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

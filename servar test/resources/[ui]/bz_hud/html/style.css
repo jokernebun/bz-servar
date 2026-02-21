@@ -1,0 +1,60 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: transparent; font-family: 'Segoe UI', sans-serif; overflow: hidden; pointer-events: none; }
+.hidden { display: none !important; }
+
+/* ============================================================ STATS */
+#stats-panel {
+    position: fixed;
+    bottom: 24px; left: 24px;
+    display: flex; flex-direction: column; gap: 8px;
+}
+.stat-bar {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(10,12,18,0.7);
+    border-radius: 20px; padding: 6px 12px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.06);
+}
+.stat-icon { font-size: 14px; }
+.stat-track {
+    width: 100px; height: 6px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 3px; overflow: hidden;
+}
+.stat-fill {
+    height: 100%; border-radius: 3px;
+    transition: width 0.4s ease;
+}
+.health-fill { background: linear-gradient(90deg, #e74c3c, #c0392b); width: 100%; }
+.armor-fill  { background: linear-gradient(90deg, #3498db, #2980b9); width: 0%; }
+.stat-val { font-size: 12px; color: rgba(255,255,255,0.6); min-width: 24px; text-align: right; }
+
+/* ============================================================ INFO */
+#info-panel {
+    position: fixed;
+    bottom: 24px; right: 24px;
+    text-align: right;
+    background: rgba(10,12,18,0.7);
+    border-radius: 10px; padding: 12px 16px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #fff;
+}
+#money-cash { font-size: 15px; font-weight: 600; color: #2ecc71; }
+#money-bank { font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 3px; }
+#job-label  { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+#grade-label{ font-size: 11px; color: rgba(255,255,255,0.3); }
+
+/* ============================================================ SPEEDOMETER */
+#speedometer {
+    position: fixed;
+    bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: rgba(10,12,18,0.75);
+    border-radius: 12px; padding: 10px 20px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.06);
+    min-width: 90px;
+}
+#speed-value { font-size: 28px; font-weight: 700; color: #fff; line-height: 1; }
+#speed-unit  { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }

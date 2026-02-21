@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="hud" class="hidden">
+
+    <!-- STATS (stanga jos) -->
+    <div id="stats-panel">
+        <div class="stat-bar" id="bar-health">
+            <div class="stat-icon">❤️</div>
+            <div class="stat-track"><div class="stat-fill health-fill" id="fill-health"></div></div>
+            <div class="stat-val" id="val-health">100</div>
+        </div>
+        <div class="stat-bar" id="bar-armor">
+            <div class="stat-icon">🛡️</div>
+            <div class="stat-track"><div class="stat-fill armor-fill" id="fill-armor"></div></div>
+            <div class="stat-val" id="val-armor">0</div>
+        </div>
+    </div>
+
+    <!-- INFO (dreapta jos) -->
+    <div id="info-panel">
+        <div id="money-cash">💵 <span id="val-cash">0</span> lei</div>
+        <div id="money-bank">🏦 <span id="val-bank">0</span> lei</div>
+        <div id="job-label" id="val-job">Somer</div>
+        <div id="grade-label" id="val-grade"></div>
+    </div>
+
+    <!-- SPEEDOMETER (centru jos) -->
+    <div id="speedometer" class="hidden">
+        <div id="speed-value">0</div>
+        <div id="speed-unit">km/h</div>
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="inventory" class="hidden">
+    <div id="inv-container">
+
+        <div id="inv-header">
+            <div>
+                <div id="inv-title">Inventar</div>
+                <div id="inv-player"></div>
+            </div>
+            <div id="inv-weight-info">
+                <div id="inv-weight-bar-wrap">
+                    <div id="inv-weight-bar"></div>
+                </div>
+                <div id="inv-weight-text">0 / 30,000 g</div>
+            </div>
+            <button id="inv-close" onclick="closeInventory()">✕</button>
+        </div>
+
+        <div id="inv-grid"></div>
+
+        <div id="inv-legend">
+            <span>🖱️ Dreapta-click = actiuni</span>
+            <span>F2 = inchide</span>
+        </div>
+
+    </div>
+
+    <!-- Context menu item -->
+    <div id="item-ctx" class="hidden">
+        <div class="ctx-item" id="ctx-use">✅ Foloseste</div>
+        <div class="ctx-item" id="ctx-drop">🗑️ Arunca</div>
+        <div class="ctx-item" id="ctx-info">ℹ️ Informatii</div>
+        <div class="ctx-sep"></div>
+        <div class="ctx-item ctx-cancel" onclick="hideCtx()">✕ Inchide</div>
+    </div>
+
+    <!-- Item tooltip -->
+    <div id="item-tooltip" class="hidden">
+        <div id="tooltip-name"></div>
+        <div id="tooltip-desc"></div>
+        <div id="tooltip-weight"></div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

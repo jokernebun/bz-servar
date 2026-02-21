@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="multichar" class="hidden">
+
+    <div id="mc-left">
+        <div id="mc-logo">BZ <span>RolePlay</span></div>
+        <div id="mc-subtitle">Selectie Personaj</div>
+
+        <div id="char-list"></div>
+
+        <div id="mc-bottom">
+            <button id="btn-disconnect" onclick="disconnect()">🚪 Deconectare</button>
+        </div>
+    </div>
+
+    <!-- Create Character Form -->
+    <div id="create-form" class="hidden">
+        <div id="create-title">Creeaza Personaj</div>
+
+        <div class="form-group">
+            <label>Prenume</label>
+            <input id="inp-firstname" type="text" placeholder="Ion" maxlength="20" />
+        </div>
+        <div class="form-group">
+            <label>Nume</label>
+            <input id="inp-lastname" type="text" placeholder="Popescu" maxlength="20" />
+        </div>
+        <div class="form-group">
+            <label>Data Nasterii</label>
+            <input id="inp-dob" type="date" value="2000-01-01" />
+        </div>
+        <div class="form-group">
+            <label>Sex</label>
+            <select id="inp-sex">
+                <option value="male">Masculin</option>
+                <option value="female">Feminin</option>
+            </select>
+        </div>
+
+        <div id="create-buttons">
+            <button class="btn-secondary" onclick="hideCreate()">Inapoi</button>
+            <button class="btn-primary" onclick="submitCreate()">Creeaza</button>
+        </div>
+    </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

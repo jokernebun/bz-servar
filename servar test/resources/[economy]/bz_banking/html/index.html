@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head><meta charset="UTF-8"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="bank" class="hidden">
+  <div id="bank-box">
+    <div id="bank-header">
+      <div id="bank-logo">🏦 Fleeca Bank</div>
+      <div id="bank-user"></div>
+      <button onclick="closeBank()">✕</button>
+    </div>
+    <div id="bank-balances">
+      <div class="bal-card"><div class="bal-icon">💵</div><div class="bal-label">Numerar</div><div class="bal-val" id="bal-cash">0 lei</div></div>
+      <div class="bal-card"><div class="bal-icon">🏦</div><div class="bal-label">Cont Bancar</div><div class="bal-val" id="bal-bank">0 lei</div></div>
+    </div>
+    <div id="bank-tabs">
+      <button class="tab active" onclick="showTab('deposit')">Depune</button>
+      <button class="tab" onclick="showTab('withdraw')">Retrage</button>
+      <button class="tab" id="tab-transfer" onclick="showTab('transfer')">Transfer</button>
+      <button class="tab" onclick="showTab('history')">Istoric</button>
+    </div>
+    <div id="tab-content">
+      <!-- Deposit -->
+      <div id="t-deposit" class="tab-pane active">
+        <div class="form-label">Suma de depus (lei)</div>
+        <input id="dep-amount" type="number" min="1" placeholder="Suma..." class="bank-input" />
+        <div class="quick-btns">
+          <button onclick="setAmt('dep-amount',500)">500</button>
+          <button onclick="setAmt('dep-amount',1000)">1000</button>
+          <button onclick="setAmt('dep-amount',5000)">5000</button>
+          <button onclick="setAmt('dep-amount',10000)">10K</button>
+        </div>
+        <button class="btn-action green" onclick="doDeposit()">✅ Depune</button>
+      </div>
+      <!-- Withdraw -->
+      <div id="t-withdraw" class="tab-pane">
+        <div class="form-label">Suma de retras (lei)</div>
+        <input id="with-amount" type="number" min="1" placeholder="Suma..." class="bank-input" />
+        <div class="quick-btns">
+          <button onclick="setAmt('with-amount',500)">500</button>
+          <button onclick="setAmt('with-amount',1000)">1000</button>
+          <button onclick="setAmt('with-amount',5000)">5000</button>
+          <button onclick="setAmt('with-amount',10000)">10K</button>
+        </div>
+        <button class="btn-action blue" onclick="doWithdraw()">💵 Retrage</button>
+      </div>
+      <!-- Transfer -->
+      <div id="t-transfer" class="tab-pane">
+        <div class="form-label">ID Jucator</div>
+        <input id="tr-id" type="number" min="1" placeholder="Server ID..." class="bank-input" />
+        <div class="form-label" style="margin-top:12px">Suma (lei)</div>
+        <input id="tr-amount" type="number" min="1" placeholder="Suma..." class="bank-input" />
+        <button class="btn-action orange" onclick="doTransfer()">📤 Transfera</button>
+      </div>
+      <!-- History -->
+      <div id="t-history" class="tab-pane">
+        <div id="history-list"><div class="hist-empty">Nu exista tranzactii recente.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
