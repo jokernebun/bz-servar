@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Meniu Garaj</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="garage-container">
+        <aside class="garage-aside">
+            <div class="garage-header">
+                <h1 class="serif logo">GARAJ<span class="accent">G</span></h1>
+                <p class="garage-subtitle">Garage Management</p>
+            </div>
+
+            <div id="vehicle-list" class="vehicle-list-scroll custom-scroll"></div>
+
+            <button type="button" id="btn-close" class="btn-exit">Ieșire</button>
+        </aside>
+
+        <div id="info-card" class="info-card">
+            <div class="info-card-content">
+            <div class="info-card-head">
+                <p id="info-class" class="info-class">AUTO</p>
+                <h2 id="info-name" class="serif info-name">---</h2>
+            </div>
+            <div class="info-card-body">
+                <div class="info-row">
+                    <div class="info-label-row">
+                        <span>COMBUSTIBIL</span>
+                        <span id="info-fuel-pct">0%</span>
+                    </div>
+                    <div class="info-bar"><div id="info-fuel-bar" class="info-bar-fill" style="width: 0%"></div></div>
+                </div>
+                <div class="info-grid">
+                    <div class="info-box">
+                        <p class="info-box-label">Motor</p>
+                        <p id="info-engine" class="info-box-value">—</p>
+                    </div>
+                    <div class="info-box">
+                        <p class="info-box-label">Caroserie</p>
+                        <p id="info-body" class="info-box-value">—</p>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <p class="info-box-label">Impozit / Taxă depozit</p>
+                    <p id="info-tax" class="info-box-value">—</p>
+                </div>
+            </div>
+            <div class="info-footer">
+                <p>Apasă <strong>CLICK</strong> pe mașină pentru a o scoate din garaj.</p>
+            </div>
+            </div>
+            <div id="info-card-bg" class="info-card-bg" aria-hidden="true"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
