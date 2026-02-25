@@ -1,219 +1,82 @@
+-- Apex Tuning config
+-- Zonele de tuning (garaje) - aceleași ca în qbx_customs (doar din aceste zone se poate deschide tuning-ul, sau prin /tuning pentru staff/fondator)
 Config = {}
 
--- Folosit doar de comanda /dvgaraj: garajul în care ajung mașinile șterse (orice cheie din Config.Garages)
-Config.DvStoredGarage = 'pdmgarage'
-
--- Distanța la care se deschide meniul garaj
-Config.GarageZoneRadius = 15.0
-Config.GarageInteractRadius = 2.5
-Config.DropOffRadius = 1.5
-
--- Modelul „hologramă” afișat deasupra punctului unde apeși [E] (model mic = hologramă mică)
-Config.PreviewModel = 'brioso'
--- Cât de sus plutește holograma (metri deasupra solului)
-Config.PreviewFloatHeight = 1.0
-
--- Debug zone (poly)
-Config.DebugPoly = false
-
--- Stările de vehicul (compatibile cu tabela player_vehicles)
-Config.VehicleState = {
-    OUT = 0,
-    GARAGED = 1,
-    IMPOUNDED = 2,
+Config.OpenKey = 'e'
+Config.AllowAnyVehicle = true
+Config.Messages = {
+    NotInVehicle = '[Apex Tuning] Intră în mașină.',
+    NotInZone = '[Apex Tuning] Poți folosi tuning-ul doar în garajele de tuning.',
+    NotAllowed = 'Nu ai acces la comanda /tuning.',
 }
 
--- Tipuri simple de garaj (doar pentru UI / logic basic)
-Config.GarageType = {
-    NORMAL = 'normal',
-    DEPOT = 'depot',
-}
+-- Comanda /tuning este doar pentru staff / fondator (setează ace permission în server.cfg: add_ace group.fondator apex_tuning.staff allow)
+Config.StaffAcePermission = 'apex_tuning.staff'
 
--- Toate garajele (copiate din qbx_garages/config/server.lua, simplificate)
--- Poți adăuga / modifica aici fără să depinzi de resource-ul qbx_garages.
-Config.Garages = {
-    -- PDM – garaj public
-    pdmgarage = {
-        label = 'PDM Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(-59.28, -1116.88, 25.43, 262.71),
-                spawn = vec4(-53.31, -1116.52, 25.43, 32.66),
-            },
+-- Zone poligonale (garaje tuning). La toate: intri cu mașina și apeși E.
+-- Fiecare zonă are poligon + radius (fallback): dacă ești în raza de X m de centru, ești în garaj.
+Config.Zones = {
+    -- Los Santos Customs - Vinewood
+    {
+        points = {
+            vector3(-344.36, -121.92, 38.60),
+            vector3(-319.43, -130.65, 38.60),
+            vector3(-324.77, -147.93, 38.60),
+            vector3(-348.59, -139.1, 38.60),
         },
+        radius = 28.0,
     },
-
-    -- Public Garages
-    motelgarage = {
-        label = 'Motel Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(275.58, -344.74, 45.17, 70.0),
-                spawn = vec4(271.26, -342.32, 44.7, 159.97),
-            }
+    -- Los Santos Customs - Airport
+    {
+        points = {
+            vector3(-1147.7, -1990.31, 13.15),
+            vector3(-1171.05, -2013.96, 13.15),
+            vector3(-1158.38, -2026.03, 13.15),
+            vector3(-1139.17, -2007.18, 13.15),
+            vector3(-1144.73, -1992.89, 13.15),
         },
+        radius = 30.0,
     },
-    sapcounsel = {
-        label = 'San Andreas Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(-330.67, -781.12, 33.96, 40.46),
-                spawn = vec4(-337.11, -775.34, 33.56, 132.09),
-            }
+    -- Los Santos Customs - East
+    {
+        points = {
+            vector3(724.93, -1092.04, 22.15),
+            vector3(738.52, -1094.83, 22.15),
+            vector3(737.36, -1064.56, 22.15),
+            vector3(724.14, -1063.71, 22.15),
         },
+        radius = 28.0,
     },
-    spanishave = {
-        label = 'Spanish Ave Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(-1160.46, -741.04, 19.95, 41.26),
-                spawn = vec4(-1165.38, -747.65, 18.94, 40.45),
-            }
+    -- Sandy Shores
+    {
+        points = {
+            vector3(1172.12, 2644.76, 38.55),
+            vector3(1171.39, 2635.66, 38.55),
+            vector3(1189.77, 2636.08, 38.55),
+            vector3(1189.74, 2644.07, 38.55),
         },
+        radius = 28.0,
     },
-    caears24 = {
-        label = 'Caears 24 Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(68.08, 13.15, 69.21, 160.44),
-                spawn = vec4(72.61, 11.72, 68.47, 157.59),
-            },
+    -- Paleto
+    {
+        points = {
+            vector3(115.55, 6625.32, 31.75),
+            vector3(109.19, 6631.69, 31.75),
+            vector3(97.39, 6620.02, 31.75),
+            vector3(102.72, 6613.48, 31.75),
         },
+        radius = 28.0,
     },
-    littleseoul = {
-        label = 'Little Seoul Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(-463.51, -808.2, 30.54, 0.0),
-                spawn = vec4(-472.24, -813.61, 30.3, 179.88),
-            }
+    -- Benny's Motorworks
+    {
+        points = {
+            vector3(-200.0, -1308.0, 30.85),
+            vector3(-231.0, -1316.0, 30.85),
+            vector3(-231.0, -1337.0, 30.85),
+            vector3(-211.0, -1344.0, 30.85),
+            vector3(-192.0, -1318.0, 30.85),
+            vector3(-192.0, -1311.0, 30.85),
         },
-    },
-    lagunapi = {
-        label = 'Laguna Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(363.85, 297.97, 103.5, 341.39),
-                spawn = vec4(367.41, 297.02, 103.2, 341.08),
-            }
-        },
-    },
-    airportp = {
-        label = 'Airport Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(-796.07, -2023.26, 9.17, 55.18),
-                spawn = vec4(-793.35, -2020.62, 8.51, 58.42),
-            }
-        },
-    },
-    beachp = {
-        label = 'Beach Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(-1184.21, -1509.65, 4.65, 303.72),
-                spawn = vec4(-1184.4, -1501.88, 4.39, 214.7),
-            }
-        },
-    },
-    themotorhotel = {
-        label = 'The Motor Hotel Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(1137.77, 2663.54, 37.9, 0.0),
-                spawn = vec4(1137.56, 2674.19, 38.17, 359.95),
-            }
-        },
-    },
-    liqourparking = {
-        label = 'Liqour Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(960.68, 3609.32, 32.98, 268.97),
-                spawn = vec4(960.48, 3605.71, 32.98, 87.09),
-            }
-        },
-    },
-    shoreparking = {
-        label = 'Shore Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(1726.9, 3710.38, 34.26, 22.54),
-                spawn = vec4(1728.65, 3714.85, 34.18, 21.26),
-            }
-        },
-    },
-    haanparking = {
-        label = 'Bell Farms Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(78.34, 6418.74, 31.28, 0),
-                spawn = vec4(70.71, 6425.16, 30.92, 68.5),
-            }
-        },
-    },
-    dumbogarage = {
-        label = 'Dumbo Private Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(157.26, -3240.00, 7.00, 0),
-                spawn = vec4(165.32, -3236.10, 5.93, 268.5),
-            }
-        },
-    },
-    pillboxgarage = {
-        label = 'Pillbox Garage Parking',
-        type = Config.GarageType.NORMAL,
-        vehicleType = 'car',
-        skipGarageCheck = true,
-        accessPoints = {
-            {
-                coords = vec4(218.66, -804.08, 30.75, 65.69),
-                spawn = vec4(229.33, -805.01, 30.54, 156.79),
-            }
-        },
+        radius = 30.0,
     },
 }
-
